@@ -15,3 +15,16 @@ spec:
       containers:
         - name: posts
           image: sha256:522fd51d8ee3bdc8e9556408f353e3a3136ea88a55894ca23e3b3dd08ec73696 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: posts-clusterip-srv
+spec:
+  selector:
+    app: posts
+  ports:
+    - name: posts
+      protocol: TCP
+      port: 4000
+      targetPort: 4000
